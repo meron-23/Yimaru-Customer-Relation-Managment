@@ -1,0 +1,66 @@
+/* Yimaru Consulting CRM design tokens (from the prototype).
+   Fonts: https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap
+   In Amharic mode put 'Noto Sans Ethiopic' first in --font. */
+:root {
+  --vv:#9A288D;
+  --vv-d:#7D1F72;
+  --vv-50:#FBF0F8;
+  --vv-100:#F6DDF0;
+  --vv-200:#E9BEDF;
+  --wv:#9A288D;
+  --wv-d:#6B1A61;
+  --wv-50:#F7ECF4;
+  --deep:#5E1655;
+  --sy:#FFD23F;
+  --sy-50:#FFF6D3;
+  --sy-d:#6B4E00;
+  --aq:#1DE9B6;
+  --aq-50:#DDF9F0;
+  --aq-d:#0D6650;
+  --red:#D64545;
+  --red-50:#FDE4E4;
+  --side:#2E0C2B;
+  --side-2:#3D1239;
+  --plum:#3E0F3A;
+  --brandbar:linear-gradient(90deg,#9A288D 0%,#6A1B9A 30%,#4C6FE0 62%,#1DE9B6 100%);
+  --bg:#F6F2F6;
+  --card:#FFFFFF;
+  --ink:#211320;
+  --ink2:#4B3D4A;
+  --ink3:#7D6F7C;
+  --ink4:#ACA0AB;
+  --line:#E8DFE8;
+  --line2:#F2ECF2;
+  --r:16px;
+  --r-s:12px;
+  --r-l:24px;
+  --sh:0 1px 2px rgba(46,12,43,.04), 0 4px 14px rgba(46,12,43,.04);
+  --sh-l:0 18px 50px rgba(30,15,25,.22);
+  --font:'Hanken Grotesk', 'Noto Sans Ethiopic', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Step colours: background / text / bar */
+  --step-registration-bg:#FDE4D2;
+  --step-registration-fg:#8A4318;
+  --step-registration-bar:#F39A5B;
+  --step-assessment-bg:#DCE8FC;
+  --step-assessment-fg:#24508F;
+  --step-assessment-bar:#6E9EEA;
+  --step-onboarding-bg:#E8DDF8;
+  --step-onboarding-fg:#55339A;
+  --step-onboarding-bar:#A386E3;
+  --step-admission-bg:#F8DAF0;
+  --step-admission-fg:#8E2A7C;
+  --step-admission-bar:#DB7FC6;
+  --step-visafile-bg:#FFF0A8;
+  --step-visafile-fg:#735300;
+  --step-visafile-bar:#F5C518;
+  --step-submitted-bg:#CDF5EA;
+  --step-submitted-fg:#0D6650;
+  --step-submitted-bar:#22D3A6;
+  --step-outcome-bg:#DFF3CD;
+  --step-outcome-fg:#3B6A18;
+  --step-outcome-bar:#83C45A;
+  /* Report chart series */
+  --chart-enquiries:#4C6FE0;
+  --chart-students:#9A288D;
+  --chart-visas:#14A57F;
+}
