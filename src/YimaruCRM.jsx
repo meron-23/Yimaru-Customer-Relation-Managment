@@ -1242,11 +1242,128 @@ export default function App() {
     await sSet(K_STUDENTS, JSON.stringify(next), true);
     if (msg) flash(msg);
   }
+
+  function detectStudentChanges(oldStu, newStu, author) {
+    if (!oldStu) return [];
+    const changes = [];
+    const pushChange = (text) => {
+      changes.push({
+        id: uid(),
+        ts: nowISO(),
+        author: author || "Staff",
+        text,
+        kind: "history"
+      });
+    };
+
+    // Stage move
+    if (newStu.stage && oldStu.stage && newStu.stage !== oldStu.stage) {
+      const alreadyLogged = (newStu.notes || []).some(
+        (n) => n.kind === "stage" && n.ts && (Date.now() - new Date(n.ts).getTime()) < 3000
+      );
+      if (!alreadyLogged) {
+        const from = STAGES[STAGE_INDEX[oldStu.stage]]?.label || oldStu.stage;
+        const to = STAGES[STAGE_INDEX[newStu.stage]]?.label || newStu.stage;
+        pushChange(`Moved stage: ${from} → ${to}`);
+      }
+    }
+
+    // Officer
+    if (newStu.officer !== undefined && newStu.officer !== oldStu.officer) {
+      if (!oldStu.officer && newStu.officer) pushChange(`Assigned officer: ${newStu.officer}`);
+      else if (oldStu.officer && !newStu.officer) pushChange(`Unassigned officer (was ${oldStu.officer})`);
+      else if (oldStu.officer && newStu.officer) pushChange(`Reassigned officer: ${oldStu.officer} → ${newStu.officer}`);
+    }
+
+    // Destination
+    const oldDest = oldStu.strategy?.country || oldStu.targetCountries?.[0] || "";
+    const newDest = newStu.strategy?.country || newStu.targetCountries?.[0] || "";
+    if (newDest !== oldDest) {
+      if (oldDest && newDest) pushChange(`Destination updated: ${oldDest} → ${newDest}`);
+      else if (newDest) pushChange(`Destination set: ${newDest}`);
+    }
+
+    // Package
+    if (newStu.packageType !== undefined && newStu.packageType !== oldStu.packageType) {
+      const pOld = PACKAGES.find((p) => p.key === oldStu.packageType)?.label || oldStu.packageType || "None";
+      const pNew = PACKAGES.find((p) => p.key === newStu.packageType)?.label || newStu.packageType || "None";
+      pushChange(`Package changed: ${pOld} → ${pNew}`);
+    }
+
+    // Funding / Sponsor
+    if (newStu.sponsorType !== undefined && newStu.sponsorType !== oldStu.sponsorType) {
+      const fOld = FUNDING.find((f) => f.key === oldStu.sponsorType)?.label || oldStu.sponsorType || "None";
+      const fNew = FUNDING.find((f) => f.key === newStu.sponsorType)?.label || newStu.sponsorType || "None";
+      pushChange(`Funding changed: ${fOld} → ${fNew}`);
+    }
+
+    // Risk
+    if (newStu.risk !== undefined && newStu.risk !== oldStu.risk) {
+      const rOld = RISK[oldStu.risk]?.label || oldStu.risk || "None";
+      const rNew = RISK[newStu.risk]?.label || newStu.risk || "None";
+      pushChange(`Risk rating updated: ${rOld} → ${rNew}`);
+    }
+
+    // Payments
+    const oldP = oldStu.payments || {};
+    const newP = newStu.payments || {};
+    if (newP.registration?.paid !== oldP.registration?.paid) {
+      pushChange(newP.registration?.paid ? "Registration fee recorded as paid" : "Registration fee reopened");
+    }
+    if (newP.payment1?.paid !== oldP.payment1?.paid) {
+      pushChange(newP.payment1?.paid ? "Payment 1 recorded as paid" : "Payment 1 marked unpaid");
+    }
+    if (newP.payment2?.paid !== oldP.payment2?.paid) {
+      pushChange(newP.payment2?.paid ? "Payment 2 recorded as paid" : "Payment 2 marked unpaid");
+    }
+
+    // QC sign-off
+    if (newStu.qcPassed !== undefined && newStu.qcPassed !== oldStu.qcPassed) {
+      pushChange(newStu.qcPassed ? "Visa file QC signed off" : "Visa file QC reopened");
+    }
+
+    // Visa Decision
+    if (newStu.decision !== undefined && newStu.decision !== oldStu.decision) {
+      const dOld = DECISION[oldStu.decision]?.label || oldStu.decision || "None";
+      const dNew = DECISION[newStu.decision]?.label || newStu.decision || "None";
+      pushChange(`Visa outcome: ${dOld} → ${dNew}`);
+    }
+
+    // Archived
+    if (newStu.archived !== undefined && newStu.archived !== oldStu.archived) {
+      pushChange(newStu.archived ? "Case archived" : "Case restored from archive");
+    }
+
+    // Contact info
+    if (newStu.phone && oldStu.phone && newStu.phone !== oldStu.phone) {
+      pushChange(`Phone updated: ${newStu.phone}`);
+    }
+    if (newStu.email && oldStu.email && newStu.email !== oldStu.email) {
+      pushChange(`Email updated: ${newStu.email}`);
+    }
+    if (newStu.intendedIntake && oldStu.intendedIntake && newStu.intendedIntake !== oldStu.intendedIntake) {
+      pushChange(`Intake updated: ${oldStu.intendedIntake} → ${newStu.intendedIntake}`);
+    }
+
+    return changes;
+  }
+
   async function saveStudent(stu, msg) {
     const latestRaw = await sGet(K_STUDENTS, true);
     let latest = students;
     if (latestRaw) { try { latest = JSON.parse(latestRaw); } catch {} }
-    const merged = { ...latest, [stu.id]: { ...stu, updatedAt: nowISO() } };
+    const old = latest[stu.id];
+    let toSave = { ...stu, updatedAt: nowISO(), updatedBy: me?.fullName || "Staff" };
+    if (old) {
+      const diffs = detectStudentChanges(old, toSave, me?.fullName || "Staff");
+      if (diffs.length > 0) {
+        toSave = {
+          ...toSave,
+          notes: [...diffs, ...(toSave.notes || [])]
+        };
+      }
+    }
+    const merged = { ...latest, [stu.id]: toSave };
     await persist(merged, msg);
     syncStudentToGoogleSheets(merged[stu.id]);
   }
@@ -1294,14 +1411,19 @@ export default function App() {
   }
   async function convertLead(lead) {
     const id = nextCaseId(students);
+    const creator = me?.fullName || "Staff";
     const stu = {
       ...blankStudent(id), fullName: lead.name, phone: lead.phone, source: lead.source,
       targetCountries: lead.interestCountry ? [lead.interestCountry] : [],
       packageType: lead.interestPackage || "", officer: me?.fullName || "",
       education: lead.education || "", intendedIntake: lead.intake || "",
       strategy: { country: lead.interestCountry || "", university: "", program: "", admissionRoute: "", funding: "", visaRoute: "" },
+      createdBy: creator,
+      createdById: me?.id || "",
+      createdAt: nowISO(),
+      updatedBy: creator
     };
-    const withNote = addNote(stu, `Converted from lead ${lead.code}`, "stage");
+    const withNote = addNote(stu, `Case created by ${creator} (converted from lead ${lead.code})`, "created");
     await saveStudent(withNote);
     await saveLead({ ...lead, status: "converted", convertedCaseId: id }, T("{n} registered as {id}", { n: lead.name || T("Lead"), id }));
     setSelId(id); setView("detail");
@@ -1348,8 +1470,17 @@ export default function App() {
   }
   function createStudent(data) {
     const id = nextCaseId(students);
-    const stu = { ...blankStudent(id), ...data, officer: data.officer || me?.fullName || "" };
-    const withNote = addNote(stu, "Case created", "stage");
+    const creator = me?.fullName || "Staff";
+    const stu = {
+      ...blankStudent(id),
+      ...data,
+      officer: data.officer || me?.fullName || "",
+      createdBy: creator,
+      createdById: me?.id || "",
+      createdAt: nowISO(),
+      updatedBy: creator
+    };
+    const withNote = addNote(stu, `Case created by ${creator}`, "created");
     saveStudent(withNote, T("Case {id} created", { id }));
     setSelId(id); setView("detail");
   }
@@ -1977,8 +2108,18 @@ function Detail({ stu, users, settings, save, move, remove, addNote, back }) {
   const [openStep, setOpenStep] = useState(stu.stage);
   const [confirmDel, setConfirmDel] = useState(false);
   const [noteText, setNoteText] = useState("");
+  const [actFilter, setActFilter] = useState("all");
   useEffect(() => { setOpenStep(stu.stage); }, [stu.id, stu.stage]);
   useEffect(() => { setTab("journey"); setConfirmDel(false); }, [stu.id]);
+
+  const allNotes = stu.notes || [];
+  const manualNotesCount = allNotes.filter((n) => n.kind === "note").length;
+  const historyCount = allNotes.filter((n) => n.kind !== "note").length;
+  const filteredNotes = allNotes.filter((n) => {
+    if (actFilter === "notes") return n.kind === "note";
+    if (actFilter === "history") return n.kind !== "note";
+    return true;
+  });
 
   const regPaid = !!stu.payments?.registration?.paid;
   const prev = STAGES[cur - 1], next = STAGES[cur + 1];
@@ -2098,15 +2239,35 @@ function Detail({ stu, users, settings, save, move, remove, addNote, back }) {
           {tab === "activity" && (
             <div className="card">
               <div className="notebox">
-                                <textarea placeholder={T("Add a note: a call, a document received, a decision…")} value={noteText} onChange={(e) => setNoteText(e.target.value)} />
+                <textarea placeholder={T("Add a note: a call, a document received, a decision…")} value={noteText} onChange={(e) => setNoteText(e.target.value)} />
                 <button className="btn primary" disabled={!noteText.trim()} onClick={() => { save(addNote(stu, noteText.trim(), "note"), T("Note added")); setNoteText(""); }}>{T("Add note")}</button>
               </div>
+
+              <div className="act-filters">
+                <button type="button" className={`act-pill ${actFilter === "all" ? "on" : ""}`} onClick={() => setActFilter("all")}>
+                  {T("All")} ({allNotes.length})
+                </button>
+                <button type="button" className={`act-pill ${actFilter === "notes" ? "on" : ""}`} onClick={() => setActFilter("notes")}>
+                  {T("Notes")} ({manualNotesCount})
+                </button>
+                <button type="button" className={`act-pill ${actFilter === "history" ? "on" : ""}`} onClick={() => setActFilter("history")}>
+                  {T("Changes")} ({historyCount})
+                </button>
+              </div>
+
               <ul className="timeline">
-                {(stu.notes || []).length === 0 && <li className="tl-empty">{T("No activity yet. Notes and stage changes will appear here.")}</li>}
-                {(stu.notes || []).map((n) => (
+                {filteredNotes.length === 0 && <li className="tl-empty">{T("No activity in this view.")}</li>}
+                {filteredNotes.map((n) => (
                   <li key={n.id} className={`tl tl-${n.kind}`}>
                     <span className="tl-dot" />
-                    <div><p>{noteText2(n.text)}</p><span className="tl-meta">{n.author}{SEP()}{dmy(n.ts)} {new Date(n.ts).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}</span></div>
+                    <div>
+                      {n.kind === "created" && <span className="tl-tag created">{T("Created")}</span>}
+                      {n.kind === "stage" && <span className="tl-tag stage">{T("Stage")}</span>}
+                      {n.kind === "history" && <span className="tl-tag history">{T("Change")}</span>}
+                      {n.kind === "note" && <span className="tl-tag note">{T("Note")}</span>}
+                      <p>{noteText2(n.text)}</p>
+                      <span className="tl-meta">{n.author}{SEP()}{dmy(n.ts)} {new Date(n.ts).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}</span>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -2166,6 +2327,16 @@ function Detail({ stu, users, settings, save, move, remove, addNote, back }) {
               <div><dt>{T("Intake")}</dt><dd>{stu.intendedIntake || <em className="nil">{T("Not set")}</em>}</dd></div>
               <div><dt>{T("Source")}</dt><dd>{stu.source ? T(stu.source) : <em className="nil">{T("Not set")}</em>}</dd></div>
               <div><dt>{T("Opened")}</dt><dd>{dmy(stu.createdAt)}</dd></div>
+              <div><dt>{T("Created by")}</dt><dd style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                <Avatar name={stu.createdBy || stu.officer || "Staff"} size={20} />
+                <span><b>{stu.createdBy || stu.officer || T("Staff")}</b></span>
+              </dd></div>
+              {stu.updatedBy && (
+                <div><dt>{T("Last edited")}</dt><dd style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                  <Avatar name={stu.updatedBy} size={20} />
+                  <span>{stu.updatedBy}</span>
+                </dd></div>
+              )}
             </dl>
           </section>
 
@@ -4183,6 +4354,17 @@ kbd{font:inherit;font-size:11px;padding:1px 6px;border-radius:6px;background:rgb
 .tl-stage .tl-dot{background:var(--plum)}
 .tl-answered .tl-dot{background:#83C45A}
 .tl-no_answer .tl-dot{background:#F5C518}
+.tl-history .tl-dot{background:#4C6FE0}
+.tl-created .tl-dot{background:#1DE9B6}
+.tl-tag{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;margin-bottom:4px;letter-spacing:0.02em}
+.tl-tag.history{background:#EEF2FF;color:#3730A3}
+.tl-tag.created{background:#DDF9F0;color:#0D6650}
+.tl-tag.stage{background:#F7ECF4;color:#6B1A61}
+.tl-tag.note{background:#F3F4F6;color:#4B5563}
+.act-filters{display:flex;gap:6px;margin-bottom:14px;border-bottom:1px solid var(--line2);padding-bottom:10px}
+.act-pill{padding:5px 12px;border-radius:999px;font-size:12px;font-weight:700;color:var(--ink3);background:none;border:0;cursor:pointer}
+.act-pill.on{background:var(--plum);color:#fff}
+.act-pill:hover:not(.on){background:rgba(0,0,0,0.05)}
 .tl p{font-size:13.5px}
 .tl-meta{font-size:12px;color:var(--ink4)}
 .tl-empty{color:var(--ink3);font-size:13.5px;padding:10px 0}

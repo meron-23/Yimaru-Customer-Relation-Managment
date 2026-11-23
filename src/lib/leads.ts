@@ -52,9 +52,9 @@ export function applyLeadCall(
 }
 
 function addDays(iso: string, n: number): string {
-  const d = new Date(iso + 'T00:00:00');
-  d.setDate(d.getDate() + n);
-  return d.toISOString().slice(0, 10);
+  const [y, m, d] = iso.split('-').map(Number);
+  const dt = new Date(Date.UTC(y, m - 1, d + n));
+  return dt.toISOString().slice(0, 10);
 }
 
 /** Generate WhatsApp direct chat link (adds 251 prefix to Ethiopian phone numbers) */
