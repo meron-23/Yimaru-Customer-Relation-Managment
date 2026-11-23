@@ -16,7 +16,12 @@ import {
   subscribeToStudents,
   subscribeToLeads
 } from "./lib/firebase";
-import { syncStudentToGoogleSheets, syncLeadToGoogleSheets } from "./lib/google-sheets";
+import {
+  syncStudentToGoogleSheets,
+  syncLeadToGoogleSheets,
+  deleteLeadFromGoogleSheets,
+  deleteStudentFromGoogleSheets
+} from "./lib/google-sheets";
 
 /* ---------- Language (English / Amharic) ----------
    LANG is set by the App on every render; T() looks a phrase up in AM.
@@ -1252,8 +1257,12 @@ export default function App() {
     const latestRaw = await sGet(K_STUDENTS, true);
     let latest = students;
     if (latestRaw) { try { latest = JSON.parse(latestRaw); } catch {} }
+    const stuToDelete = latest[id];
     const merged = { ...latest }; delete merged[id];
     await persist(merged, T("Case deleted"));
+    if (stuToDelete) {
+      deleteStudentFromGoogleSheets(stuToDelete.id);
+    }
     setSelId(null); setView("students");
   }
   async function saveLead(lead, msg) {
@@ -1271,8 +1280,12 @@ export default function App() {
     const latestRaw = await sGet(K_LEADS, true);
     let latest = leads;
     if (latestRaw) { try { latest = JSON.parse(latestRaw); } catch {} }
+    const leadToDelete = latest[id];
     const merged = { ...latest }; delete merged[id];
     setLeads(merged); await sSet(K_LEADS, JSON.stringify(merged), true); if (msg) flash(msg);
+    if (leadToDelete) {
+      deleteLeadFromGoogleSheets(leadToDelete.code || leadToDelete.id);
+    }
   }
   function createLead(data) {
     const id = uid(), code = nextLeadCode(leads);
