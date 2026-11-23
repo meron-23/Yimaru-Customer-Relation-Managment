@@ -16,6 +16,7 @@ import {
   subscribeToStudents,
   subscribeToLeads
 } from "./lib/firebase";
+import { syncStudentToGoogleSheets, syncLeadToGoogleSheets } from "./lib/google-sheets";
 
 /* ---------- Language (English / Amharic) ----------
    LANG is set by the App on every render; T() looks a phrase up in AM.
@@ -1242,6 +1243,7 @@ export default function App() {
     if (latestRaw) { try { latest = JSON.parse(latestRaw); } catch {} }
     const merged = { ...latest, [stu.id]: { ...stu, updatedAt: nowISO() } };
     await persist(merged, msg);
+    syncStudentToGoogleSheets(merged[stu.id]);
   }
   async function removeStudent(id) {
     if (isFirebaseConfigured()) {
@@ -1260,6 +1262,7 @@ export default function App() {
     if (latestRaw) { try { latest = JSON.parse(latestRaw); } catch {} }
     const merged = { ...latest, [lead.id]: { ...lead, updatedAt: nowISO() } };
     setLeads(merged); await sSet(K_LEADS, JSON.stringify(merged), true); if (msg) flash(msg);
+    syncLeadToGoogleSheets(merged[lead.id]);
   }
   async function removeLead(id, msg) {
     if (isFirebaseConfigured()) {
