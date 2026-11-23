@@ -1,4 +1,4 @@
-import refData from '../../../03-Reference-data/reference-data.json';
+import refData from './reference-data.json';
 
 export const ALL_COUNTRIES: { en: string; am: string }[] = refData.all_countries;
 export const COUNTRY_NAMES: string[] = ALL_COUNTRIES.map(c => c.en);

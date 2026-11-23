@@ -1,0 +1,1869 @@
+{
+  "_about": "Reference data for the Yimaru Consulting CRM, exported from the prototype. Every label has its English and Amharic form. Keys (e.g. stage keys) are what the database stores.",
+  "stages": [
+    {
+      "order": 1,
+      "key": "registration",
+      "label": {
+        "en": "Registration",
+        "am": "ምዝገባ"
+      },
+      "hint": {
+        "en": "Collect the registration fee. Work starts once it’s paid.",
+        "am": "የምዝገባ ክፍያውን ይሰብስቡ። ሥራው የሚጀምረው ከተከፈለ በኋላ ነው።"
+      },
+      "colours": {
+        "background": "#FDE4D2",
+        "text": "#8A4318",
+        "bar": "#F39A5B"
+      }
+    },
+    {
+      "order": 2,
+      "key": "assessment",
+      "label": {
+        "en": "Assessment",
+        "am": "ግምገማ"
+      },
+      "hint": {
+        "en": "Review the profile and set a risk level.",
+        "am": "መገለጫውን ይገምግሙና የስጋት ደረጃ ይወስኑ።"
+      },
+      "colours": {
+        "background": "#DCE8FC",
+        "text": "#24508F",
+        "bar": "#6E9EEA"
+      }
+    },
+    {
+      "order": 3,
+      "key": "onboarding",
+      "label": {
+        "en": "Onboarding",
+        "am": "የዕቅድ ዝግጅት"
+      },
+      "hint": {
+        "en": "Sign the contract and agree the study plan.",
+        "am": "ውሉን ይፈርሙና የትምህርት ዕቅዱን ይስማሙ።"
+      },
+      "colours": {
+        "background": "#E8DDF8",
+        "text": "#55339A",
+        "bar": "#A386E3"
+      }
+    },
+    {
+      "order": 4,
+      "key": "admission",
+      "label": {
+        "en": "Admission",
+        "am": "ቅበላ"
+      },
+      "hint": {
+        "en": "Apply to universities and wait for offers.",
+        "am": "ለዩኒቨርሲቲዎች ያመልክቱና የቅበላ ውሳኔ ይጠብቁ።"
+      },
+      "colours": {
+        "background": "#F8DAF0",
+        "text": "#8E2A7C",
+        "bar": "#DB7FC6"
+      }
+    },
+    {
+      "order": 5,
+      "key": "visafile",
+      "label": {
+        "en": "Visa file",
+        "am": "የቪዛ ፋይል"
+      },
+      "hint": {
+        "en": "Build the financial story and documents, then get QC sign-off.",
+        "am": "የገንዘብ ታሪኩንና ሰነዶቹን ያዘጋጁ፣ ከዚያ የጥራት ፍተሻ ፊርማ ያግኙ።"
+      },
+      "colours": {
+        "background": "#FFF0A8",
+        "text": "#735300",
+        "bar": "#F5C518"
+      }
+    },
+    {
+      "order": 6,
+      "key": "submitted",
+      "label": {
+        "en": "Submitted",
+        "am": "ለኤምባሲ ገብቷል"
+      },
+      "hint": {
+        "en": "Book the appointment, lodge the file, prepare for the interview.",
+        "am": "ቀጠሮ ይያዙ፣ ፋይሉን ያስገቡ፣ ለቃለ መጠይቅ ይዘጋጁ።"
+      },
+      "colours": {
+        "background": "#CDF5EA",
+        "text": "#0D6650",
+        "bar": "#22D3A6"
+      }
+    },
+    {
+      "order": 7,
+      "key": "outcome",
+      "label": {
+        "en": "Outcome",
+        "am": "ውጤት"
+      },
+      "hint": {
+        "en": "Record the decision and support departure.",
+        "am": "ውሳኔውን ይመዝግቡና ለጉዞው ድጋፍ ያድርጉ።"
+      },
+      "colours": {
+        "background": "#DFF3CD",
+        "text": "#3B6A18",
+        "bar": "#83C45A"
+      }
+    }
+  ],
+  "packages": [
+    {
+      "key": "p1",
+      "label": {
+        "en": "Package 1",
+        "am": "ፓኬጅ 1"
+      },
+      "description": {
+        "en": "Consulting, applying & university admission",
+        "am": "ምክር፣ ማመልከቻና የዩኒቨርሲቲ ቅበላ"
+      },
+      "payments": [
+        "registration",
+        "payment1"
+      ]
+    },
+    {
+      "key": "p2",
+      "label": {
+        "en": "Package 2",
+        "am": "ፓኬጅ 2"
+      },
+      "description": {
+        "en": "Full journey through visa completion",
+        "am": "ቪዛ እስኪጠናቀቅ ሙሉ ጉዞ"
+      },
+      "payments": [
+        "registration",
+        "payment1",
+        "payment2"
+      ]
+    }
+  ],
+  "payments": [
+    {
+      "key": "registration",
+      "label": {
+        "en": "Registration fee",
+        "am": "የምዝገባ ክፍያ"
+      },
+      "when": {
+        "en": "Non-refundable — starts the whole process",
+        "am": "የማይመለስ፣ ሂደቱን በሙሉ ያስጀምራል"
+      }
+    },
+    {
+      "key": "payment1",
+      "label": {
+        "en": "Payment 1",
+        "am": "ክፍያ 1"
+      },
+      "when": {
+        "en": "Due once university admission is received",
+        "am": "የዩኒቨርሲቲ ቅበላ ሲገኝ የሚከፈል"
+      }
+    },
+    {
+      "key": "payment2",
+      "label": {
+        "en": "Payment 2",
+        "am": "ክፍያ 2"
+      },
+      "when": {
+        "en": "Due once the visa is completed",
+        "am": "ቪዛው ሲጠናቀቅ የሚከፈል"
+      }
+    }
+  ],
+  "risk_levels": [
+    {
+      "key": "strong",
+      "label": {
+        "en": "Strong",
+        "am": "ጠንካራ"
+      }
+    },
+    {
+      "key": "improve",
+      "label": {
+        "en": "Needs improvement",
+        "am": "መሻሻል ያስፈልገዋል"
+      }
+    },
+    {
+      "key": "high",
+      "label": {
+        "en": "High risk",
+        "am": "ከፍተኛ ስጋት"
+      }
+    }
+  ],
+  "visa_decisions": [
+    {
+      "key": "approved",
+      "label": {
+        "en": "Approved",
+        "am": "ጸድቋል"
+      }
+    },
+    {
+      "key": "additional",
+      "label": {
+        "en": "More documents",
+        "am": "ተጨማሪ ሰነዶች"
+      }
+    },
+    {
+      "key": "refused",
+      "label": {
+        "en": "Refused",
+        "am": "ውድቅ ተደርጓል"
+      }
+    }
+  ],
+  "funding": [
+    {
+      "key": "scholarship",
+      "label": {
+        "en": "Scholarship",
+        "am": "ስኮላርሺፕ"
+      }
+    },
+    {
+      "key": "self",
+      "label": {
+        "en": "Self-sponsored",
+        "am": "በራስ ወጪ"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "en": "Facebook / Instagram",
+      "am": "ፌስቡክ / ኢንስታግራም"
+    },
+    {
+      "en": "TikTok",
+      "am": "ቲክቶክ"
+    },
+    {
+      "en": "Telegram",
+      "am": "ቴሌግራም"
+    },
+    {
+      "en": "WhatsApp",
+      "am": "ዋትስአፕ"
+    },
+    {
+      "en": "Referral",
+      "am": "በሰው ጥቆማ"
+    },
+    {
+      "en": "Scholarship campaign",
+      "am": "የስኮላርሺፕ ዘመቻ"
+    },
+    {
+      "en": "Website",
+      "am": "ድረ ገጽ"
+    },
+    {
+      "en": "Walk-in",
+      "am": "በአካል የመጣ"
+    }
+  ],
+  "application_statuses": [
+    {
+      "en": "Planned",
+      "am": "የታቀደ"
+    },
+    {
+      "en": "Applied",
+      "am": "አመልክቷል"
+    },
+    {
+      "en": "In review",
+      "am": "በግምገማ ላይ"
+    },
+    {
+      "en": "Offer",
+      "am": "ቅበላ ተገኝቷል"
+    },
+    {
+      "en": "Rejected",
+      "am": "ተቀባይነት አላገኘም"
+    },
+    {
+      "en": "Enrolled",
+      "am": "ተመዝግቧል"
+    }
+  ],
+  "lead_call_outcomes": [
+    {
+      "key": "no_answer",
+      "label": {
+        "en": "No answer",
+        "am": "ስልኩን አላነሳም"
+      }
+    },
+    {
+      "key": "answered",
+      "label": {
+        "en": "Answered",
+        "am": "ስልኩን አንስቷል"
+      }
+    },
+    {
+      "key": "not_interested",
+      "label": {
+        "en": "Not interested",
+        "am": "ፍላጎት የለውም"
+      }
+    },
+    {
+      "key": "out_of_scope",
+      "label": {
+        "en": "Out of scope",
+        "am": "ከአገልግሎታችን ውጭ"
+      }
+    }
+  ],
+  "lead_close_reasons": [
+    {
+      "key": "no_response",
+      "label": {
+        "en": "No response after all calls",
+        "am": "ከሁሉም ጥሪዎች በኋላ ምላሽ የለም"
+      }
+    },
+    {
+      "key": "not_interested",
+      "label": {
+        "en": "Not interested",
+        "am": "ፍላጎት የለውም"
+      }
+    },
+    {
+      "key": "out_of_scope",
+      "label": {
+        "en": "Out of scope",
+        "am": "ከአገልግሎታችን ውጭ"
+      }
+    },
+    {
+      "key": "other",
+      "label": {
+        "en": "Closed",
+        "am": "ተዘግቷል"
+      }
+    }
+  ],
+  "checklists": {
+    "financial": [
+      {
+        "en": "Sponsor identity",
+        "am": "የስፖንሰር መታወቂያ"
+      },
+      {
+        "en": "Relationship to student",
+        "am": "ከተማሪው ጋር ያለው ዝምድና"
+      },
+      {
+        "en": "Bank statements",
+        "am": "የባንክ ሂሳብ መግለጫዎች"
+      },
+      {
+        "en": "Bank balance",
+        "am": "የባንክ ቀሪ ሂሳብ"
+      },
+      {
+        "en": "Income source",
+        "am": "የገቢ ምንጭ"
+      },
+      {
+        "en": "Employment / business evidence",
+        "am": "የሥራ / የንግድ ማስረጃ"
+      },
+      {
+        "en": "Tax documents",
+        "am": "የግብር ሰነዶች"
+      },
+      {
+        "en": "Property / assets",
+        "am": "ንብረት / ሀብት"
+      },
+      {
+        "en": "Tuition payment",
+        "am": "የትምህርት ክፍያ"
+      },
+      {
+        "en": "Scholarship",
+        "am": "ስኮላርሺፕ"
+      },
+      {
+        "en": "Source of funds",
+        "am": "የገንዘብ ምንጭ"
+      },
+      {
+        "en": "Consistency across documents",
+        "am": "በሰነዶች መካከል መጣጣም"
+      }
+    ],
+    "interview_preparation": [
+      {
+        "key": "mock1",
+        "label": {
+          "en": "Mock interview 1",
+          "am": "የልምምድ ቃለ መጠይቅ 1"
+        }
+      },
+      {
+        "key": "difficult",
+        "label": {
+          "en": "Difficult-question session",
+          "am": "የከባድ ጥያቄዎች ልምምድ"
+        }
+      },
+      {
+        "key": "mock2",
+        "label": {
+          "en": "Mock interview 2",
+          "am": "የልምምድ ቃለ መጠይቅ 2"
+        }
+      },
+      {
+        "key": "ready",
+        "label": {
+          "en": "Final readiness assessment",
+          "am": "የመጨረሻ ዝግጁነት ግምገማ"
+        }
+      }
+    ],
+    "after_visa": [
+      {
+        "key": "pv_Flight planning",
+        "label": {
+          "en": "Flight planning",
+          "am": "የበረራ ዕቅድ"
+        }
+      },
+      {
+        "key": "pv_Accommodation",
+        "label": {
+          "en": "Accommodation",
+          "am": "መኖሪያ"
+        }
+      },
+      {
+        "key": "pv_Travel checklist",
+        "label": {
+          "en": "Travel checklist",
+          "am": "የጉዞ ማረጋገጫ ዝርዝር"
+        }
+      },
+      {
+        "key": "pv_Airport guidance",
+        "label": {
+          "en": "Airport guidance",
+          "am": "የአውሮፕላን ማረፊያ መመሪያ"
+        }
+      },
+      {
+        "key": "pv_University registration",
+        "label": {
+          "en": "University registration",
+          "am": "የዩኒቨርሲቲ ምዝገባ"
+        }
+      },
+      {
+        "key": "pv_Residence permit",
+        "label": {
+          "en": "Residence permit",
+          "am": "የመኖሪያ ፈቃድ"
+        }
+      },
+      {
+        "key": "pv_Arrival orientation",
+        "label": {
+          "en": "Arrival orientation",
+          "am": "የመድረሻ ገለጻ"
+        }
+      },
+      {
+        "key": "pv_Emergency contacts",
+        "label": {
+          "en": "Emergency contacts",
+          "am": "የአደጋ ጊዜ አድራሻዎች"
+        }
+      }
+    ],
+    "visa_documents_by_country": {
+      "Italy": [
+        {
+          "en": "Valid passport (+ old passports)",
+          "am": "የሚሠራ ፓስፖርት (+ የቆዩ ፓስፖርቶች)"
+        },
+        {
+          "en": "Type-D visa application form",
+          "am": "የዓይነት-D ቪዛ ማመልከቻ ቅጽ"
+        },
+        {
+          "en": "Pre-enrolment on Universitaly",
+          "am": "በUniversitaly ቅድመ ምዝገባ"
+        },
+        {
+          "en": "University admission / acceptance letter",
+          "am": "የዩኒቨርሲቲ ቅበላ / የመቀበያ ደብዳቤ"
+        },
+        {
+          "en": "CIMEA statement / Declaration of Value",
+          "am": "CIMEA መግለጫ / Declaration of Value"
+        },
+        {
+          "en": "Proof of means of subsistence",
+          "am": "የመተዳደሪያ ማስረጃ"
+        },
+        {
+          "en": "Sponsor bank statements (last 6 months)",
+          "am": "የስፖንሰር የባንክ መግለጫ (ያለፉት 6 ወራት)"
+        },
+        {
+          "en": "Sponsor income / employment proof",
+          "am": "የስፖንሰር ገቢ / የሥራ ማስረጃ"
+        },
+        {
+          "en": "Tuition payment receipt",
+          "am": "የትምህርት ክፍያ ደረሰኝ"
+        },
+        {
+          "en": "Accommodation proof in Italy",
+          "am": "በጣሊያን የመኖሪያ ማስረጃ"
+        },
+        {
+          "en": "Health insurance (valid in Italy)",
+          "am": "የጤና መድን (በጣሊያን የሚሠራ)"
+        },
+        {
+          "en": "Academic transcripts & certificates (legalised)",
+          "am": "የትምህርት ውጤት ማስረጃዎችና ሰርተፊኬቶች (የተረጋገጡ)"
+        },
+        {
+          "en": "English/Italian proficiency certificate",
+          "am": "የእንግሊዝኛ/ጣሊያንኛ ብቃት ሰርተፊኬት"
+        },
+        {
+          "en": "Round-trip flight reservation",
+          "am": "የደርሶ መልስ በረራ ቦታ ማስያዣ"
+        },
+        {
+          "en": "2 passport photos (ICAO)",
+          "am": "2 የፓስፖርት ፎቶዎች (ICAO)"
+        },
+        {
+          "en": "VFS appointment booked",
+          "am": "የVFS ቀጠሮ ተይዟል"
+        }
+      ],
+      "Germany": [
+        {
+          "en": "Valid passport (+ old passports)",
+          "am": "የሚሠራ ፓስፖርት (+ የቆዩ ፓስፖርቶች)"
+        },
+        {
+          "en": "National visa application form (VIDEX)",
+          "am": "የብሔራዊ ቪዛ ማመልከቻ ቅጽ (VIDEX)"
+        },
+        {
+          "en": "University admission (Zulassung)",
+          "am": "የዩኒቨርሲቲ ቅበላ (Zulassung)"
+        },
+        {
+          "en": "Blocked account (Sperrkonto) funded",
+          "am": "የታገደ ሂሳብ (Sperrkonto) ገንዘብ ገብቶበታል"
+        },
+        {
+          "en": "APS certificate",
+          "am": "APS ሰርተፊኬት"
+        },
+        {
+          "en": "Health insurance (travel + confirmation)",
+          "am": "የጤና መድን (የጉዞ + ማረጋገጫ)"
+        },
+        {
+          "en": "Academic transcripts & degree certificates",
+          "am": "የትምህርት ውጤት ማስረጃዎችና የዲግሪ ሰርተፊኬቶች"
+        },
+        {
+          "en": "Motivation / SOP letter",
+          "am": "የፍላጎት / SOP ደብዳቤ"
+        },
+        {
+          "en": "CV",
+          "am": "የሥራ ልምድ (CV)"
+        },
+        {
+          "en": "Proof of accommodation",
+          "am": "የመኖሪያ ማስረጃ"
+        },
+        {
+          "en": "Language certificate (German/English)",
+          "am": "የቋንቋ ሰርተፊኬት (ጀርመንኛ/እንግሊዝኛ)"
+        },
+        {
+          "en": "2 biometric photos",
+          "am": "2 ባዮሜትሪክ ፎቶዎች"
+        },
+        {
+          "en": "Appointment booked",
+          "am": "ቀጠሮ ተይዟል"
+        }
+      ],
+      "Canada": [
+        {
+          "en": "Valid passport",
+          "am": "የሚሠራ ፓስፖርት"
+        },
+        {
+          "en": "Study permit application (IMM1294)",
+          "am": "የትምህርት ፈቃድ ማመልከቻ (IMM1294)"
+        },
+        {
+          "en": "Provincial Attestation Letter (PAL)",
+          "am": "የክፍለ ሀገር ማረጋገጫ ደብዳቤ (PAL)"
+        },
+        {
+          "en": "Letter of acceptance (DLI)",
+          "am": "የቅበላ ደብዳቤ (DLI)"
+        },
+        {
+          "en": "Proof of funds (tuition + 1 year living + travel)",
+          "am": "የገንዘብ ማስረጃ (ትምህርት + 1 ዓመት ኑሮ + ጉዞ)"
+        },
+        {
+          "en": "GIC certificate",
+          "am": "GIC ሰርተፊኬት"
+        },
+        {
+          "en": "Statement of Purpose",
+          "am": "የዓላማ መግለጫ"
+        },
+        {
+          "en": "Academic transcripts & certificates",
+          "am": "የትምህርት ውጤት ማስረጃዎችና ሰርተፊኬቶች"
+        },
+        {
+          "en": "Language test (IELTS/PTE)",
+          "am": "የቋንቋ ፈተና (IELTS/PTE)"
+        },
+        {
+          "en": "Medical exam (panel physician)",
+          "am": "የሕክምና ምርመራ (የተፈቀደ ሐኪም)"
+        },
+        {
+          "en": "Digital photo",
+          "am": "ዲጂታል ፎቶ"
+        },
+        {
+          "en": "Biometrics appointment",
+          "am": "የባዮሜትሪክ ቀጠሮ"
+        }
+      ],
+      "USA": [
+        {
+          "en": "Valid passport (6+ months)",
+          "am": "የሚሠራ ፓስፖርት (6+ ወራት)"
+        },
+        {
+          "en": "Form I-20 (SEVIS registered)",
+          "am": "ቅጽ I-20 (በSEVIS የተመዘገበ)"
+        },
+        {
+          "en": "SEVIS I-901 fee receipt",
+          "am": "SEVIS I-901 የክፍያ ደረሰኝ"
+        },
+        {
+          "en": "DS-160 confirmation",
+          "am": "DS-160 ማረጋገጫ"
+        },
+        {
+          "en": "Visa appointment (OFC + consular)",
+          "am": "የቪዛ ቀጠሮ (OFC + ቆንስላ)"
+        },
+        {
+          "en": "Proof of funds (first year + evidence beyond)",
+          "am": "የገንዘብ ማስረጃ (የመጀመሪያ ዓመት + ተጨማሪ ማስረጃ)"
+        },
+        {
+          "en": "Sponsor affidavit & bank letters",
+          "am": "የስፖንሰር ቃለ መሐላና የባንክ ደብዳቤዎች"
+        },
+        {
+          "en": "Academic transcripts & certificates",
+          "am": "የትምህርት ውጤት ማስረጃዎችና ሰርተፊኬቶች"
+        },
+        {
+          "en": "Standardised test scores (IELTS/TOEFL/GRE)",
+          "am": "የደረጃውን የጠበቀ ፈተና ውጤት (IELTS/TOEFL/GRE)"
+        },
+        {
+          "en": "Ties-to-home evidence",
+          "am": "ከአገር ጋር ያለ ትስስር ማስረጃ"
+        },
+        {
+          "en": "Photo (per spec)",
+          "am": "ፎቶ (በመስፈርቱ መሠረት)"
+        }
+      ],
+      "UK": [
+        {
+          "en": "Valid passport",
+          "am": "የሚሠራ ፓስፖርት"
+        },
+        {
+          "en": "CAS from licensed sponsor",
+          "am": "ፈቃድ ካለው ስፖንሰር CAS"
+        },
+        {
+          "en": "Proof of funds held 28 consecutive days",
+          "am": "ለ28 ተከታታይ ቀናት የተያዘ የገንዘብ ማስረጃ"
+        },
+        {
+          "en": "Tuition & maintenance evidence",
+          "am": "የትምህርትና የኑሮ ወጪ ማስረጃ"
+        },
+        {
+          "en": "Academic qualifications on CAS",
+          "am": "በCAS ላይ ያሉ የትምህርት ማስረጃዎች"
+        },
+        {
+          "en": "English (SELT/approved)",
+          "am": "እንግሊዝኛ (SELT/የጸደቀ)"
+        },
+        {
+          "en": "ATAS certificate (if required)",
+          "am": "ATAS ሰርተፊኬት (አስፈላጊ ከሆነ)"
+        },
+        {
+          "en": "TB test certificate",
+          "am": "የቲቢ ምርመራ ሰርተፊኬት"
+        },
+        {
+          "en": "IHS surcharge paid",
+          "am": "IHS ክፍያ ተከፍሏል"
+        },
+        {
+          "en": "Appointment booked",
+          "am": "ቀጠሮ ተይዟል"
+        }
+      ],
+      "Hungary": [
+        {
+          "en": "Valid passport",
+          "am": "የሚሠራ ፓስፖርት"
+        },
+        {
+          "en": "Residence-permit (type-D) application",
+          "am": "የመኖሪያ ፈቃድ (ዓይነት-D) ማመልከቻ"
+        },
+        {
+          "en": "University admission / Stipendium award",
+          "am": "የዩኒቨርሲቲ ቅበላ / የStipendium ሽልማት"
+        },
+        {
+          "en": "Proof of funds / scholarship letter",
+          "am": "የገንዘብ ማስረጃ / የስኮላርሺፕ ደብዳቤ"
+        },
+        {
+          "en": "Accommodation proof",
+          "am": "የመኖሪያ ማስረጃ"
+        },
+        {
+          "en": "Health insurance",
+          "am": "የጤና መድን"
+        },
+        {
+          "en": "Academic documents (legalised)",
+          "am": "የትምህርት ሰነዶች (የተረጋገጡ)"
+        },
+        {
+          "en": "Language certificate",
+          "am": "የቋንቋ ሰርተፊኬት"
+        },
+        {
+          "en": "Photographs",
+          "am": "ፎቶግራፎች"
+        },
+        {
+          "en": "Appointment booked",
+          "am": "ቀጠሮ ተይዟል"
+        }
+      ],
+      "Default": [
+        {
+          "en": "Valid passport",
+          "am": "የሚሠራ ፓስፖርት"
+        },
+        {
+          "en": "Visa application form",
+          "am": "የቪዛ ማመልከቻ ቅጽ"
+        },
+        {
+          "en": "University admission letter",
+          "am": "የዩኒቨርሲቲ ቅበላ ደብዳቤ"
+        },
+        {
+          "en": "Proof of funds",
+          "am": "የገንዘብ ማስረጃ"
+        },
+        {
+          "en": "Sponsor documents",
+          "am": "የስፖንሰር ሰነዶች"
+        },
+        {
+          "en": "Tuition payment proof",
+          "am": "የትምህርት ክፍያ ማስረጃ"
+        },
+        {
+          "en": "Accommodation proof",
+          "am": "የመኖሪያ ማስረጃ"
+        },
+        {
+          "en": "Health insurance",
+          "am": "የጤና መድን"
+        },
+        {
+          "en": "Academic transcripts & certificates",
+          "am": "የትምህርት ውጤት ማስረጃዎችና ሰርተፊኬቶች"
+        },
+        {
+          "en": "Language certificate",
+          "am": "የቋንቋ ሰርተፊኬት"
+        },
+        {
+          "en": "Passport photos",
+          "am": "የፓስፖርት ፎቶዎች"
+        },
+        {
+          "en": "Appointment booked",
+          "am": "ቀጠሮ ተይዟል"
+        }
+      ]
+    }
+  },
+  "study_destinations_quick_list": [
+    {
+      "en": "Italy",
+      "am": "ጣሊያን"
+    },
+    {
+      "en": "Germany",
+      "am": "ጀርመን"
+    },
+    {
+      "en": "Hungary",
+      "am": "ሀንጋሪ"
+    },
+    {
+      "en": "Austria",
+      "am": "ኦስትሪያ"
+    },
+    {
+      "en": "Cyprus",
+      "am": "ቆጵሮስ"
+    },
+    {
+      "en": "Poland",
+      "am": "ፖላንድ"
+    },
+    {
+      "en": "Czech Republic",
+      "am": "ቼክ ሪፐብሊክ"
+    },
+    {
+      "en": "France",
+      "am": "ፈረንሳይ"
+    },
+    {
+      "en": "Netherlands",
+      "am": "ኔዘርላንድ"
+    },
+    {
+      "en": "Belgium",
+      "am": "ቤልጂየም"
+    },
+    {
+      "en": "Sweden",
+      "am": "ስዊድን"
+    },
+    {
+      "en": "Finland",
+      "am": "ፊንላንድ"
+    },
+    {
+      "en": "Ireland",
+      "am": "አየርላንድ"
+    },
+    {
+      "en": "UK",
+      "am": "እንግሊዝ"
+    },
+    {
+      "en": "Malta",
+      "am": "ማልታ"
+    },
+    {
+      "en": "Greece",
+      "am": "ግሪክ"
+    },
+    {
+      "en": "Spain",
+      "am": "ስፔን"
+    },
+    {
+      "en": "Portugal",
+      "am": "ፖርቱጋል"
+    },
+    {
+      "en": "Lithuania",
+      "am": "ሊትዌኒያ"
+    },
+    {
+      "en": "Latvia",
+      "am": "ላትቪያ"
+    },
+    {
+      "en": "Estonia",
+      "am": "ኢስቶኒያ"
+    },
+    {
+      "en": "USA",
+      "am": "አሜሪካ"
+    },
+    {
+      "en": "Canada",
+      "am": "ካናዳ"
+    },
+    {
+      "en": "Australia",
+      "am": "አውስትራሊያ"
+    },
+    {
+      "en": "New Zealand",
+      "am": "ኒውዚላንድ"
+    },
+    {
+      "en": "China",
+      "am": "ቻይና"
+    },
+    {
+      "en": "India",
+      "am": "ህንድ"
+    },
+    {
+      "en": "Malaysia",
+      "am": "ማሌዢያ"
+    },
+    {
+      "en": "Turkey",
+      "am": "ቱርክ"
+    },
+    {
+      "en": "Dubai (UAE)",
+      "am": "ዱባይ (ተ.አ.ኤ.)"
+    },
+    {
+      "en": "Russia",
+      "am": "ሩሲያ"
+    },
+    {
+      "en": "South Korea",
+      "am": "ደቡብ ኮሪያ"
+    },
+    {
+      "en": "Japan",
+      "am": "ጃፓን"
+    },
+    {
+      "en": "Rwanda",
+      "am": "ሩዋንዳ"
+    },
+    {
+      "en": "Other",
+      "am": "ሌላ"
+    }
+  ],
+  "all_countries": [
+    {
+      "en": "Afghanistan",
+      "am": "አፍጋኒስታን"
+    },
+    {
+      "en": "Albania",
+      "am": "አልባኒያ"
+    },
+    {
+      "en": "Algeria",
+      "am": "አልጄሪያ"
+    },
+    {
+      "en": "Andorra",
+      "am": "አንዶራ"
+    },
+    {
+      "en": "Angola",
+      "am": "አንጎላ"
+    },
+    {
+      "en": "Antigua and Barbuda",
+      "am": "አንቲጓና ባርቡዳ"
+    },
+    {
+      "en": "Argentina",
+      "am": "አርጀንቲና"
+    },
+    {
+      "en": "Armenia",
+      "am": "አርሜኒያ"
+    },
+    {
+      "en": "Australia",
+      "am": "አውስትራሊያ"
+    },
+    {
+      "en": "Austria",
+      "am": "ኦስትሪያ"
+    },
+    {
+      "en": "Azerbaijan",
+      "am": "አዘርባጃን"
+    },
+    {
+      "en": "Bahamas",
+      "am": "ባሃማስ"
+    },
+    {
+      "en": "Bahrain",
+      "am": "ባህሬን"
+    },
+    {
+      "en": "Bangladesh",
+      "am": "ባንግላዲሽ"
+    },
+    {
+      "en": "Barbados",
+      "am": "ባርባዶስ"
+    },
+    {
+      "en": "Belarus",
+      "am": "ቤላሩስ"
+    },
+    {
+      "en": "Belgium",
+      "am": "ቤልጂየም"
+    },
+    {
+      "en": "Belize",
+      "am": "ቤሊዝ"
+    },
+    {
+      "en": "Benin",
+      "am": "ቤኒን"
+    },
+    {
+      "en": "Bhutan",
+      "am": "ቡታን"
+    },
+    {
+      "en": "Bolivia",
+      "am": "ቦሊቪያ"
+    },
+    {
+      "en": "Bosnia and Herzegovina",
+      "am": "ቦስኒያና ሄርዞጎቪና"
+    },
+    {
+      "en": "Botswana",
+      "am": "ቦትስዋና"
+    },
+    {
+      "en": "Brazil",
+      "am": "ብራዚል"
+    },
+    {
+      "en": "Brunei",
+      "am": "ብሩኔይ"
+    },
+    {
+      "en": "Bulgaria",
+      "am": "ቡልጋሪያ"
+    },
+    {
+      "en": "Burkina Faso",
+      "am": "ቡርኪና ፋሶ"
+    },
+    {
+      "en": "Burundi",
+      "am": "ብሩንዲ"
+    },
+    {
+      "en": "Cambodia",
+      "am": "ካምቦዲያ"
+    },
+    {
+      "en": "Cameroon",
+      "am": "ካሜሩን"
+    },
+    {
+      "en": "Canada",
+      "am": "ካናዳ"
+    },
+    {
+      "en": "Cape Verde",
+      "am": "ኬፕ ቨርዴ"
+    },
+    {
+      "en": "Central African Republic",
+      "am": "የመካከለኛው አፍሪካ ሪፐብሊክ"
+    },
+    {
+      "en": "Chad",
+      "am": "ቻድ"
+    },
+    {
+      "en": "Chile",
+      "am": "ቺሊ"
+    },
+    {
+      "en": "China",
+      "am": "ቻይና"
+    },
+    {
+      "en": "Colombia",
+      "am": "ኮሎምቢያ"
+    },
+    {
+      "en": "Comoros",
+      "am": "ኮሞሮስ"
+    },
+    {
+      "en": "Congo",
+      "am": "ኮንጎ"
+    },
+    {
+      "en": "Costa Rica",
+      "am": "ኮስታ ሪካ"
+    },
+    {
+      "en": "Croatia",
+      "am": "ክሮኤሽያ"
+    },
+    {
+      "en": "Cuba",
+      "am": "ኩባ"
+    },
+    {
+      "en": "Cyprus",
+      "am": "ቆጵሮስ"
+    },
+    {
+      "en": "Czech Republic",
+      "am": "ቼክ ሪፐብሊክ"
+    },
+    {
+      "en": "Democratic Republic of the Congo",
+      "am": "ዴሞክራቲክ ሪፐብሊክ ኮንጎ"
+    },
+    {
+      "en": "Denmark",
+      "am": "ዴንማርክ"
+    },
+    {
+      "en": "Djibouti",
+      "am": "ጅቡቲ"
+    },
+    {
+      "en": "Dominica",
+      "am": "ዶሚኒካ"
+    },
+    {
+      "en": "Dominican Republic",
+      "am": "ዶሚኒካን ሪፐብሊክ"
+    },
+    {
+      "en": "Dubai (UAE)",
+      "am": "ዱባይ (ተ.አ.ኤ.)"
+    },
+    {
+      "en": "Ecuador",
+      "am": "ኢኳዶር"
+    },
+    {
+      "en": "Egypt",
+      "am": "ግብፅ"
+    },
+    {
+      "en": "El Salvador",
+      "am": "ኤል ሳልቫዶር"
+    },
+    {
+      "en": "Equatorial Guinea",
+      "am": "ኢኳቶሪያል ጊኒ"
+    },
+    {
+      "en": "Eritrea",
+      "am": "ኤርትራ"
+    },
+    {
+      "en": "Estonia",
+      "am": "ኢስቶኒያ"
+    },
+    {
+      "en": "Eswatini",
+      "am": "ኢስዋቲኒ"
+    },
+    {
+      "en": "Ethiopia",
+      "am": "ኢትዮጵያ"
+    },
+    {
+      "en": "Fiji",
+      "am": "ፊጂ"
+    },
+    {
+      "en": "Finland",
+      "am": "ፊንላንድ"
+    },
+    {
+      "en": "France",
+      "am": "ፈረንሳይ"
+    },
+    {
+      "en": "Gabon",
+      "am": "ጋቦን"
+    },
+    {
+      "en": "Gambia",
+      "am": "ጋምቢያ"
+    },
+    {
+      "en": "Georgia",
+      "am": "ጆርጂያ"
+    },
+    {
+      "en": "Germany",
+      "am": "ጀርመን"
+    },
+    {
+      "en": "Ghana",
+      "am": "ጋና"
+    },
+    {
+      "en": "Greece",
+      "am": "ግሪክ"
+    },
+    {
+      "en": "Grenada",
+      "am": "ግሬናዳ"
+    },
+    {
+      "en": "Guatemala",
+      "am": "ጓቲማላ"
+    },
+    {
+      "en": "Guinea",
+      "am": "ጊኒ"
+    },
+    {
+      "en": "Guinea-Bissau",
+      "am": "ጊኒ ቢሳው"
+    },
+    {
+      "en": "Guyana",
+      "am": "ጉያና"
+    },
+    {
+      "en": "Haiti",
+      "am": "ሄይቲ"
+    },
+    {
+      "en": "Honduras",
+      "am": "ሆንዱራስ"
+    },
+    {
+      "en": "Hong Kong",
+      "am": "ሆንግ ኮንግ"
+    },
+    {
+      "en": "Hungary",
+      "am": "ሀንጋሪ"
+    },
+    {
+      "en": "Iceland",
+      "am": "አይስላንድ"
+    },
+    {
+      "en": "India",
+      "am": "ህንድ"
+    },
+    {
+      "en": "Indonesia",
+      "am": "ኢንዶኔዢያ"
+    },
+    {
+      "en": "Iran",
+      "am": "ኢራን"
+    },
+    {
+      "en": "Iraq",
+      "am": "ኢራቅ"
+    },
+    {
+      "en": "Ireland",
+      "am": "አየርላንድ"
+    },
+    {
+      "en": "Israel",
+      "am": "እስራኤል"
+    },
+    {
+      "en": "Italy",
+      "am": "ጣሊያን"
+    },
+    {
+      "en": "Ivory Coast",
+      "am": "ኮት ዲቯር"
+    },
+    {
+      "en": "Jamaica",
+      "am": "ጃማይካ"
+    },
+    {
+      "en": "Japan",
+      "am": "ጃፓን"
+    },
+    {
+      "en": "Jordan",
+      "am": "ዮርዳኖስ"
+    },
+    {
+      "en": "Kazakhstan",
+      "am": "ካዛኪስታን"
+    },
+    {
+      "en": "Kenya",
+      "am": "ኬንያ"
+    },
+    {
+      "en": "Kiribati",
+      "am": "ኪሪባቲ"
+    },
+    {
+      "en": "Kosovo",
+      "am": "ኮሶቮ"
+    },
+    {
+      "en": "Kuwait",
+      "am": "ኩዌት"
+    },
+    {
+      "en": "Kyrgyzstan",
+      "am": "ኪርጊስታን"
+    },
+    {
+      "en": "Laos",
+      "am": "ላኦስ"
+    },
+    {
+      "en": "Latvia",
+      "am": "ላትቪያ"
+    },
+    {
+      "en": "Lebanon",
+      "am": "ሊባኖስ"
+    },
+    {
+      "en": "Lesotho",
+      "am": "ሌሶቶ"
+    },
+    {
+      "en": "Liberia",
+      "am": "ላይቤሪያ"
+    },
+    {
+      "en": "Libya",
+      "am": "ሊቢያ"
+    },
+    {
+      "en": "Liechtenstein",
+      "am": "ሊችተንስታይን"
+    },
+    {
+      "en": "Lithuania",
+      "am": "ሊትዌኒያ"
+    },
+    {
+      "en": "Luxembourg",
+      "am": "ሉክሰምበርግ"
+    },
+    {
+      "en": "Madagascar",
+      "am": "ማዳጋስካር"
+    },
+    {
+      "en": "Malawi",
+      "am": "ማላዊ"
+    },
+    {
+      "en": "Malaysia",
+      "am": "ማሌዢያ"
+    },
+    {
+      "en": "Maldives",
+      "am": "ማልዲቭስ"
+    },
+    {
+      "en": "Mali",
+      "am": "ማሊ"
+    },
+    {
+      "en": "Malta",
+      "am": "ማልታ"
+    },
+    {
+      "en": "Marshall Islands",
+      "am": "ማርሻል ደሴቶች"
+    },
+    {
+      "en": "Mauritania",
+      "am": "ሞሪታኒያ"
+    },
+    {
+      "en": "Mauritius",
+      "am": "ሞሪሸስ"
+    },
+    {
+      "en": "Mexico",
+      "am": "ሜክሲኮ"
+    },
+    {
+      "en": "Micronesia",
+      "am": "ማይክሮኔዢያ"
+    },
+    {
+      "en": "Moldova",
+      "am": "ሞልዶቫ"
+    },
+    {
+      "en": "Monaco",
+      "am": "ሞናኮ"
+    },
+    {
+      "en": "Mongolia",
+      "am": "ሞንጎሊያ"
+    },
+    {
+      "en": "Montenegro",
+      "am": "ሞንቴኔግሮ"
+    },
+    {
+      "en": "Morocco",
+      "am": "ሞሮኮ"
+    },
+    {
+      "en": "Mozambique",
+      "am": "ሞዛምቢክ"
+    },
+    {
+      "en": "Myanmar",
+      "am": "ምያንማር"
+    },
+    {
+      "en": "Namibia",
+      "am": "ናሚቢያ"
+    },
+    {
+      "en": "Nauru",
+      "am": "ናውሩ"
+    },
+    {
+      "en": "Nepal",
+      "am": "ኔፓል"
+    },
+    {
+      "en": "Netherlands",
+      "am": "ኔዘርላንድ"
+    },
+    {
+      "en": "New Zealand",
+      "am": "ኒውዚላንድ"
+    },
+    {
+      "en": "Nicaragua",
+      "am": "ኒካራጓ"
+    },
+    {
+      "en": "Niger",
+      "am": "ኒጀር"
+    },
+    {
+      "en": "Nigeria",
+      "am": "ናይጄሪያ"
+    },
+    {
+      "en": "North Korea",
+      "am": "ሰሜን ኮሪያ"
+    },
+    {
+      "en": "North Macedonia",
+      "am": "ሰሜን መቄዶንያ"
+    },
+    {
+      "en": "Norway",
+      "am": "ኖርዌይ"
+    },
+    {
+      "en": "Oman",
+      "am": "ኦማን"
+    },
+    {
+      "en": "Pakistan",
+      "am": "ፓኪስታን"
+    },
+    {
+      "en": "Palau",
+      "am": "ፓላው"
+    },
+    {
+      "en": "Palestine",
+      "am": "ፍልስጤም"
+    },
+    {
+      "en": "Panama",
+      "am": "ፓናማ"
+    },
+    {
+      "en": "Papua New Guinea",
+      "am": "ፓፑዋ ኒው ጊኒ"
+    },
+    {
+      "en": "Paraguay",
+      "am": "ፓራጓይ"
+    },
+    {
+      "en": "Peru",
+      "am": "ፔሩ"
+    },
+    {
+      "en": "Philippines",
+      "am": "ፊሊፒንስ"
+    },
+    {
+      "en": "Poland",
+      "am": "ፖላንድ"
+    },
+    {
+      "en": "Portugal",
+      "am": "ፖርቱጋል"
+    },
+    {
+      "en": "Qatar",
+      "am": "ኳታር"
+    },
+    {
+      "en": "Romania",
+      "am": "ሩማንያ"
+    },
+    {
+      "en": "Russia",
+      "am": "ሩሲያ"
+    },
+    {
+      "en": "Rwanda",
+      "am": "ሩዋንዳ"
+    },
+    {
+      "en": "Saint Kitts and Nevis",
+      "am": "ሴንት ኪትስና ኔቪስ"
+    },
+    {
+      "en": "Saint Lucia",
+      "am": "ሴንት ሉሲያ"
+    },
+    {
+      "en": "Saint Vincent and the Grenadines",
+      "am": "ሴንት ቪንሰንትና ግሬናዲንስ"
+    },
+    {
+      "en": "Samoa",
+      "am": "ሳሞአ"
+    },
+    {
+      "en": "San Marino",
+      "am": "ሳን ማሪኖ"
+    },
+    {
+      "en": "Sao Tome and Principe",
+      "am": "ሳኦ ቶሜና ፕሪንሲፔ"
+    },
+    {
+      "en": "Saudi Arabia",
+      "am": "ሳውዲ አረቢያ"
+    },
+    {
+      "en": "Senegal",
+      "am": "ሴኔጋል"
+    },
+    {
+      "en": "Serbia",
+      "am": "ሰርቢያ"
+    },
+    {
+      "en": "Seychelles",
+      "am": "ሲሼልስ"
+    },
+    {
+      "en": "Sierra Leone",
+      "am": "ሴራ ሊዮን"
+    },
+    {
+      "en": "Singapore",
+      "am": "ሲንጋፖር"
+    },
+    {
+      "en": "Slovakia",
+      "am": "ስሎቫኪያ"
+    },
+    {
+      "en": "Slovenia",
+      "am": "ስሎቬኒያ"
+    },
+    {
+      "en": "Solomon Islands",
+      "am": "ሰሎሞን ደሴቶች"
+    },
+    {
+      "en": "Somalia",
+      "am": "ሶማሊያ"
+    },
+    {
+      "en": "South Africa",
+      "am": "ደቡብ አፍሪካ"
+    },
+    {
+      "en": "South Korea",
+      "am": "ደቡብ ኮሪያ"
+    },
+    {
+      "en": "South Sudan",
+      "am": "ደቡብ ሱዳን"
+    },
+    {
+      "en": "Spain",
+      "am": "ስፔን"
+    },
+    {
+      "en": "Sri Lanka",
+      "am": "ስሪ ላንካ"
+    },
+    {
+      "en": "Sudan",
+      "am": "ሱዳን"
+    },
+    {
+      "en": "Suriname",
+      "am": "ሱሪናም"
+    },
+    {
+      "en": "Sweden",
+      "am": "ስዊድን"
+    },
+    {
+      "en": "Switzerland",
+      "am": "ስዊዘርላንድ"
+    },
+    {
+      "en": "Syria",
+      "am": "ሶሪያ"
+    },
+    {
+      "en": "Taiwan",
+      "am": "ታይዋን"
+    },
+    {
+      "en": "Tajikistan",
+      "am": "ታጂኪስታን"
+    },
+    {
+      "en": "Tanzania",
+      "am": "ታንዛኒያ"
+    },
+    {
+      "en": "Thailand",
+      "am": "ታይላንድ"
+    },
+    {
+      "en": "Timor-Leste",
+      "am": "ምሥራቅ ቲሞር"
+    },
+    {
+      "en": "Togo",
+      "am": "ቶጎ"
+    },
+    {
+      "en": "Tonga",
+      "am": "ቶንጋ"
+    },
+    {
+      "en": "Trinidad and Tobago",
+      "am": "ትሪኒዳድና ቶቤጎ"
+    },
+    {
+      "en": "Tunisia",
+      "am": "ቱኒዚያ"
+    },
+    {
+      "en": "Turkey",
+      "am": "ቱርክ"
+    },
+    {
+      "en": "Turkmenistan",
+      "am": "ቱርክሜኒስታን"
+    },
+    {
+      "en": "Tuvalu",
+      "am": "ቱቫሉ"
+    },
+    {
+      "en": "Uganda",
+      "am": "ዩጋንዳ"
+    },
+    {
+      "en": "UK",
+      "am": "እንግሊዝ"
+    },
+    {
+      "en": "Ukraine",
+      "am": "ዩክሬን"
+    },
+    {
+      "en": "United Arab Emirates",
+      "am": "የተባበሩት አረብ ኤሚሬቶች"
+    },
+    {
+      "en": "Uruguay",
+      "am": "ኡራጓይ"
+    },
+    {
+      "en": "USA",
+      "am": "አሜሪካ"
+    },
+    {
+      "en": "Uzbekistan",
+      "am": "ኡዝቤኪስታን"
+    },
+    {
+      "en": "Vanuatu",
+      "am": "ቫኑአቱ"
+    },
+    {
+      "en": "Vatican City",
+      "am": "ቫቲካን"
+    },
+    {
+      "en": "Venezuela",
+      "am": "ቬኔዝዌላ"
+    },
+    {
+      "en": "Vietnam",
+      "am": "ቬትናም"
+    },
+    {
+      "en": "Yemen",
+      "am": "የመን"
+    },
+    {
+      "en": "Zambia",
+      "am": "ዛምቢያ"
+    },
+    {
+      "en": "Zimbabwe",
+      "am": "ዚምባብዌ"
+    }
+  ],
+  "default_settings": {
+    "business_name": "Yimaru Consulting",
+    "currency": "ETB",
+    "packages": {
+      "p1": {
+        "registration": "",
+        "total": ""
+      },
+      "p2": {
+        "registration": "",
+        "total": ""
+      }
+    },
+    "destination_prices": [
+      {
+        "name": "Italy",
+        "payment1": "150000",
+        "payment2": "150000"
+      },
+      {
+        "name": "Germany",
+        "payment1": "150000",
+        "payment2": "150000"
+      },
+      {
+        "name": "Hungary",
+        "payment1": "150000",
+        "payment2": "150000"
+      },
+      {
+        "name": "Austria",
+        "payment1": "150000",
+        "payment2": "150000"
+      },
+      {
+        "name": "Canada",
+        "payment1": "150000",
+        "payment2": "150000"
+      },
+      {
+        "name": "USA",
+        "payment1": "150000",
+        "payment2": "150000"
+      },
+      {
+        "name": "UK",
+        "payment1": "150000",
+        "payment2": "150000"
+      },
+      {
+        "name": "Cyprus",
+        "payment1": "150000",
+        "payment2": "150000"
+      }
+    ],
+    "lead_call_plan_days": [
+      0,
+      1,
+      3,
+      7,
+      14
+    ]
+  }
+}
